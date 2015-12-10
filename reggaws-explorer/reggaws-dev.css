@@ -1,0 +1,109 @@
+/*
+Regga.ws - Swagger-based API Explorer 
+Code subjected to the terms of the Mozilla Public License, v. 2.0.
+See http://mozilla.org/MPL/2.0/.
+*/
+
+body {
+	background-color: #993333;
+}
+
+div, span, input {
+	color: #000;
+}
+
+ul {
+  padding-left: 0px;
+  list-style-type: none;
+}
+
+li {
+  margin-bottom: 0px;
+}
+
+a:link {
+    color: #000;
+}
+
+a:visited {
+    color: #000;
+}
+
+a:hover {
+    color: #000;
+    text-decoration: underline;
+}
+
+a:active {
+    color: #000;
+    text-decoration: underline;
+}
+
+.form-control:focus {
+  border-color: #FF0000;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 0, 0, 0.6);
+}
+
+.search_label {
+	background-color: #ffff99;
+	border-color: #800000;
+	font-weight: bold;
+	font-size: 14px;
+	color: #000;
+}
+.search_input {
+	background-color: #ffffff;
+	border-color: #800000;
+	font-size: 14px;
+	color: #000;
+}
+.search_noresult {
+	font-weight: bold;
+	padding-bottom: 6px;
+}
+.about_label {
+	background-color: #ffff99;
+	border-color: #800000;
+	font-size: 14px;
+}
+.col_title {
+	font-weight: bold;
+	font-size: 14px;
+	border-bottom: 1px solid #800000;
+    margin-bottom: 6px;
+	padding-bottom: 4px;
+}
+
+.commons_container {
+	width: 100%;
+	padding: 4px;
+	margin: 0px;
+}
+.search_row {
+	padding: 2px;
+	width: 100%;
+	margin: 0px;
+}
+.result_row {
+	padding: 2px;
+	width: 100%;
+	margin: 0px;
+}
+.commons_col {
+	background-color: #ffff99;
+	border: 1px solid #800000;
+	font-size: 10px;
+}
+
+.list_col {
+	padding: 8px 12px 2px 12px;
+}
+.json_col {
+	padding: 8px 12px 8px 12px;
+}
+.uml_row {
+	background-color: #ffff99;
+	width: 99%;
+	padding: 8px;
+	margin: 0px;
+}

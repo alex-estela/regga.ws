@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Regga.ws beta</title>
+<link rel="stylesheet" href="css/bootstrap.min.css"/>
+<link rel="stylesheet" href="css/joint.min.css"/>
+<script src="lib/jquery.min.js"></script>
+<script src="lib/lodash.min.js"></script>
+<script src="lib/backbone-min.js"></script>
+<script src="lib/joint.min.js"></script>
+<script src="lib/lunr.min.js"></script>
+<link rel="stylesheet" href="reggaws-dev.css"/>
+<script src="reggaws-dev.js"></script>
+<script src="reggaws-entries.js"></script>
+</head>
+<body>
+<div class="container commons_container">
+<div class="row search_row">
+<div class="input-group">
+<span class="input-group-addon search_label">Search for a resource or attribute:</span>
+<input id="searchField" type="text" class="form-control search_input" placeholder=""/><!-- Currently displaying the entire API extracted from swagger.json -->
+<span class="input-group-addon about_label">
+<a id="umlLink" href="#" onclick="changeSelectedMode('uml')">Go to resource diagram</a>
+<a id="jsonpathLink" href="#" onclick="changeSelectedMode('jsonpath')">Go to examples and uses</a>
+</span>
+</div>
+</div>
+<div class="row result_row">
+<div id="resultDiv" class="col-lg-3 commons_col list_col"></div>
+<div id="jsonDiv" class="col-lg-4 commons_col json_col"></div>
+<div id="pathDiv" class="col-lg-5 commons_col list_col"></div>
+<div id="umlDiv" class="col-lg-9 commons_col list_col"></div>
+</div>
+</div>
+<script type="text/javascript">
+// hide everything while it is not used
+$("#resultDiv").hide();
+$("#jsonDiv").hide();
+$("#pathDiv").hide();
+$("#umlDiv").hide();
+$("#jsonpathLink").hide();
+
+if (!this.reggaWsEntityMap || !this.reggaWsEntryList) alert("reggaws-entries.js file should be in the same folder as index.html");
+else {
+	ReggaWs.init(reggaWsEntityMap, reggaWsEntryList, $("#searchField"), $("#resultDiv"), "search_noresult", "renderForSelectedMode", "col_title", $("#jsonDiv"), $("#pathDiv"), $("#umlDiv"));
+
+	var selectedMode = 'jsonpath';
+	var selectedResourceName = null;
+	
+	var changeSelectedMode = function(mode) {
+		selectedMode = mode;
+		if (mode == 'jsonpath') {
+			$("#umlDiv").hide();
+			$("#jsonDiv").show();
+			$("#pathDiv").show();
+			$("#jsonpathLink").hide();
+			$("#umlLink").show();
+
+			if (selectedResourceName && $("#jsonDiv").html() == "") renderForSelectedMode(selectedResourceName);
+		}
+		else if (mode == 'uml') {
+			$("#jsonDiv").hide();
+			$("#pathDiv").hide();
+			$("#umlDiv").show();
+			$("#umlLink").hide();
+			$("#jsonpathLink").show();
+			console.log("uml.selectedResourceName = " + selectedResourceName);
+			console.log("uml.umlDivHtml = " + $("#umlDiv").html());
+			
+			if (selectedResourceName && $("#umlDiv").html() == "") renderForSelectedMode(selectedResourceName);
+		}
+	}
+	
+	var renderForSelectedMode = function(resourceName) {
+		if (selectedMode == 'jsonpath') {
+			ReggaWs.renderEntityJson(resourceName);
+			ReggaWs.renderPaths(resourceName);
+			$("#jsonDiv").show();
+			$("#pathDiv").show();
+			if (resourceName != selectedResourceName) $("#umlDiv").empty();
+		}
+		else if (selectedMode == 'uml') {
+			ReggaWs.renderUmlDiagram(resourceName);
+			$("#umlDiv").show();
+			if (resourceName != selectedResourceName) $("#jsonDiv").empty();
+		}
+		selectedResourceName = resourceName;
+	}
+}
+</script>
+</body>
+</html>
