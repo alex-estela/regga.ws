@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Regga.ws beta</title>
+<title>regga.ws beta</title>
+<meta charset="utf-8" />
 <link rel="stylesheet" href="css/bootstrap.min.css"/>
 <link rel="stylesheet" href="css/joint.min.css"/>
 <script src="lib/jquery.min.js"></script>
@@ -64,8 +65,6 @@ else {
 			$("#umlDiv").show();
 			$("#umlLink").hide();
 			$("#jsonpathLink").show();
-			console.log("uml.selectedResourceName = " + selectedResourceName);
-			console.log("uml.umlDivHtml = " + $("#umlDiv").html());
 			
 			if (selectedResourceName && $("#umlDiv").html() == "") renderForSelectedMode(selectedResourceName);
 		}

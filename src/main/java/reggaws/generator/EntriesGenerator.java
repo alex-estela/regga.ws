@@ -267,7 +267,7 @@ public class EntriesGenerator {
 			}
 		}
 		
-		System.out.println(entities.size() + " entities found");
+		System.out.println("Found " + entities.size() + " entities");
 		
 		FileOutputStream fos = new FileOutputStream(jsOutputFilePath);
 		try {
@@ -321,6 +321,8 @@ public class EntriesGenerator {
 		}
 		
 		System.out.println("Entries written");
+		
+		System.out.println("Generated regga.ws entries file: " + jsOutputFilePath);
 	}
 
 //	private static Entity getOrCreateEntity(String entityName, TreeMap<String, Entity> entities, TreeMap<String, Entity> tempEntities) {

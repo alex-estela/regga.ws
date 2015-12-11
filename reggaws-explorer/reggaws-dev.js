@@ -262,10 +262,17 @@ var ReggaWs = {
 		var scopedEntityList = [];
 		var maxHeight = 0;
 		var currentX = 0;
-		var currentY = 0;
-		// prepare
+		var currentY = 0;	
+		
+		// show only selected entity and relations
 		var selectedEntity = ReggaWs.entityMap[selectedEntityName];
 		ReggaWs._addEntityAndRelationsToScope(selectedEntity, scopedEntityMap);
+		
+		// show all entities and relations
+		//for (var e in ReggaWs.entityMap) {
+		//	ReggaWs._addEntityAndRelationsToScope(ReggaWs.entityMap[e], scopedEntityMap);
+		//}
+		
 		for (var e in scopedEntityMap) {
 			scopedEntityList.push(scopedEntityMap[e])
 		}
